@@ -1,0 +1,1 @@
+web: bundle exec ruby stream_to_mongo.rb -p $PORT
