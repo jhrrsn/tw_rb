@@ -1,0 +1,11 @@
+<p>Your search term was <%=keyword.capitalize%></p>
+
+<% results.each do |result| %>
+<h3><%=result['name']%></h3>
+<p><%=result['text']%></p>
+<p><%=Time.at(result['time'])%></p>
+<br>
+<% end %>
+
+<p>Min time = <%= Time.at(min_time)%></p>
+<p>Max time = <%= Time.at(max_time)%></p>
