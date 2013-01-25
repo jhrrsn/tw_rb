@@ -10,10 +10,18 @@ client = MongoClient.new("localhost", 27017)
 db = client.db("tw_rb")
 $coll = db["tweets"]
 
+
+########################
+# Setup Sinatra routes #
+########################
+
+# When root page is accessed, return index.erb
 get '/' do 
   erb :index
 end
 
+
+# When the form at index is submitted, this method will run and return results.erb 
 post '/result' do
 
   # Use supplied keyword to query MongoDB
@@ -43,5 +51,11 @@ post '/result' do
     @tweets.push tweet
   end
 
-  erb :results, locals: {keyword: input, results: results, min_time: @min_time, max_time: @max_time}
+  # Return results.erb with variables keywords, results, min & max time.
+  erb :results, locals: {
+    keyword: input, 
+    results: results, 
+    min_time: @min_time, 
+    max_time: @max_time
+  }
 end
