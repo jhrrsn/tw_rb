@@ -54,7 +54,7 @@ post '/result' do
   # Return results.erb with variables keywords, results, min & max time.
   erb :results, locals: {
     keyword: input, 
-    results: results, 
+    results: @tweets, 
     min_time: @min_time, 
     max_time: @max_time
   }
