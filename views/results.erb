@@ -63,6 +63,7 @@
       
       <div class="masthead">
           <ul class="nav nav-pills pull-right">
+            <li><a href="/">Back to Search</a></li>
             <li class="active"><a href="#">Learn how to make this!</a></li>
           </ul>
           <h3 class="muted">Twitter Keyword Profiler</h3>
@@ -123,11 +124,9 @@
           if (cellCount > cellMax) cellMax = cellCount;
         }
 
-        console.log(cellMax);
-
         var color = d3.scale.linear()
             .domain([0, cellMax])
-            .range([240, 0])
+            .range([250, 0])
             .clamp(true);
 
         var svg = d3.select("div#visualisation").selectAll("svg")
@@ -138,7 +137,7 @@
               .attr("height", cellSize)
               .attr("class", "cell")
               .style("background-color", function(d) {
-                var level = color(d.length);
+                var level = Math.floor(color(d.length));
                 return "rgb(" + level + ", " + level + ", " + level + ")";
               });
       </script>
