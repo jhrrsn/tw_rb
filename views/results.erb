@@ -10,6 +10,7 @@
       body {
         padding-top: 20px;
         padding-bottom: 40px;
+        text-rendering: optimizeLegibility;
       }
 
       /* Custom container */
@@ -39,6 +40,10 @@
       .cell {
         vertical-align:top;
         margin: 0.2%;
+      }
+
+      .footer p {
+        text-align: center;
       }
 
     </style>
@@ -88,58 +93,7 @@
       <script src="http://d3js.org/d3.v3.min.js"></script>
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script type="text/javascript">
-        var results = <%=results%>;
-        var data = [];
-        for (var i = 0; i < results.length; i++) {
-          data.push(results[i][0]);
-        }
-
-        var cellSize = $("div#visualisation").width() / 11.3;
-        var cells = []
-
-        var minX = -8;
-        var minY = 49;
-        var nRows = 11;
-        var nCells = 143;
-
-        for (var i = 0; i < nCells; i++) {
-          cells.push([]);
-        }
-
-        for (var i = 0; i < data.length; i++) {
-          var x = Math.floor(data[i][1]);
-          var y = Math.floor(data[i][0]);
-
-          normX = x - minX;
-          normY = y - minY;
-
-          var gridPosition = nCells - ((normY + 1) * nRows - normX);
-          cells[gridPosition].push([i]);
-        }
-
-        var cellMax = 0;
-
-        for (var i = 0; i < cells.length; i++) {
-          cellCount = cells[i].length;
-          if (cellCount > cellMax) cellMax = cellCount;
-        }
-
-        var color = d3.scale.linear()
-            .domain([0, cellMax])
-            .range([250, 0])
-            .clamp(true);
-
-        var svg = d3.select("div#visualisation").selectAll("svg")
-            .data(cells)
-            .enter()
-              .append("svg")
-              .attr("width", cellSize)
-              .attr("height", cellSize)
-              .attr("class", "cell")
-              .style("background-color", function(d) {
-                var level = Math.floor(color(d.length));
-                return "rgb(" + level + ", " + level + ", " + level + ")";
-              });
+        
       </script>
       <script src="js/bootstrap.min.js"></script>
     </div>
