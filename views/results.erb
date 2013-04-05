@@ -123,7 +123,16 @@
           if (glConst[i] > glMax) glMax = glConst[i];
         }
 
-        console.log(glMax);
+        function remap(value, oldMin, oldMax, newMin, newMax) {
+          var newValue = (((value - oldMin) * (newMax - newMin)) / (oldMax - oldMin)) + newMin;
+          return newValue;
+        };
+
+        for (var i = 41442; i <= 41455; i++) {
+          glConst[i] = Math.round(remap(glConst[i], 0, glMax, 0, 100));
+        }
+
+        console.log(glConst);
 
         var width = 800,
             height = 525;
