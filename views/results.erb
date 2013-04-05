@@ -45,7 +45,7 @@
 
       /* Default svg styling */
       svg {
-        margin: 1em auto 2em auto;
+        margin: 1em auto 3em auto;
         display: block;
         stroke-width: 1px;
         fill: hsl(200,57%,90%);
@@ -68,6 +68,10 @@
         font-weight: 600;
         line-height: 1.2em;
         color: hsl(200,57%,85%);
+      }
+
+      #info p span {
+        color: hsl(200,57%,50%);
       }
 
       .footer p {
@@ -111,7 +115,8 @@
 
       <div id="viz"></div>
       <div id="info">
-        <p>↑<br>Hover</p>
+        <p>↑<p>
+        <p>Hover</p>
       </div>
       <hr>
 
@@ -204,8 +209,8 @@
               .on("mouseover", hover);
 
           function hover(d) {
-            $('#info p').text(glNames[d.id]);
-            $('#info p').css('color','hsl(200,57%,60%)')
+            $('div#info').html('<p>' + glNames[d.id] + '</p>' + '<p><span id="tweets">' + glConst[d.id] + '</span>' + ' tweets</p>')
+            $('div#info p').css('color','hsl(200,57%,60%)')
           }
           });
 
