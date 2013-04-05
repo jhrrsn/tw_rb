@@ -31,6 +31,9 @@
         font-size: 72px;
         line-height: 1;
       }
+      .jumbotron .text-success {
+        color: hsl(200,57%,40%);
+      }
       .jumbotron .btn {
         font-size: 21px;
         padding: 14px 24px;
@@ -40,7 +43,7 @@
       svg {
         margin: 0 auto 30px auto;
         display: block;
-        stroke: white;
+        stroke-width: 1px;
         fill: #EDF8E9;
       }
 
@@ -129,7 +132,7 @@
         };
 
         for (var i = 41442; i <= 41455; i++) {
-          glConst[i] = Math.round(remap(glConst[i], 0, glMax, 0, 100));
+          glConst[i] = Math.round(remap(glConst[i], 0, glMax, 40, 90));
         }
 
         console.log(glConst);
@@ -156,6 +159,8 @@
             .data(topojson.object(london, london.objects.ldn).geometries)
             .enter().append("path")
               .attr("class", function(d) { return "const" + " " + d.id; })
+              .attr("fill", function(d) { return "hsl(200,50%," +  glConst[d.id] + "%)"})
+              .attr("stroke", function(d) { return "hsl(200,50%," +  glConst[d.id] + "%)"})
               .attr("d", path);
           });
 
