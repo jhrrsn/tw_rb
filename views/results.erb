@@ -41,7 +41,7 @@
         margin: 0 auto 30px auto;
         display: block;
         stroke: white;
-        fill: #EFF3FF;
+        fill: #EDF8E9;
       }
 
       .footer p {
@@ -96,6 +96,10 @@
       <script src="http://d3js.org/topojson.v0.min.js"></script>
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script type="text/javascript">
+        <% results.each do |result| %>
+        console.log(<%=result%>)
+        <% end %>
+
         var width = 800,
             height = 525;
 
