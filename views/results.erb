@@ -177,8 +177,10 @@
           return newValue;
         };
 
+        var glScaled = [];
+
         for (var i = 41442; i <= 41455; i++) {
-          glConst[i] = Math.round(remap(glConst[i], 0, glMax, 90, 50));
+          glScaled[i] = Math.round(remap(glConst[i], 0, glMax, 90, 50));
         }
 
         var width = 800,
@@ -203,8 +205,8 @@
             .data(topojson.object(london, london.objects.ldn).geometries)
             .enter().append("path")
               .attr("class", function(d) { return "const" + " " + d.id; })
-              .attr("fill", function(d) { return "hsl(200,50%," +  glConst[d.id] + "%)"})
-              .attr("stroke", function(d) { return "hsl(200,50%," +  glConst[d.id] + "%)"})
+              .attr("fill", function(d) { return "hsl(200,50%," +  glScaled[d.id] + "%)"})
+              .attr("stroke", function(d) { return "hsl(200,50%," +  glScaled[d.id] + "%)"})
               .attr("d", path)
               .on("mouseover", hover);
 
