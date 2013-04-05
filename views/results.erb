@@ -96,9 +96,34 @@
       <script src="http://d3js.org/topojson.v0.min.js"></script>
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script type="text/javascript">
+
+        var glConst = {
+          41442 : 0,
+          41443 : 0,
+          41444 : 0,
+          41445 : 0,
+          41446 : 0,
+          41447 : 0,
+          41448 : 0,
+          41449 : 0,
+          41450 : 0,
+          41451 : 0,
+          41452 : 0,
+          41453 : 0,
+          41454 : 0,
+          41455 : 0
+        }
+
         <% results.each do |result| %>
-        console.log(<%=result['gl_const']%>);
+        glConst[<%=result['gl_const']%>] += 1;
         <% end %>
+
+        var glMax = 0;
+        for (var i = 41442; i <= 41455; i++) {
+          if (glConst[i] > glMax) glMax = glConst[i];
+        }
+
+        console.log(glMax);
 
         var width = 800,
             height = 525;
