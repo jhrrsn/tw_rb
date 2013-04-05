@@ -24,7 +24,7 @@
 
       /* Main message and search button */
       .jumbotron {
-        margin: 60px 0;
+        margin: 60px 0 0 0;
         text-align: center;
       }
       .jumbotron h1 {
@@ -38,7 +38,7 @@
 
       /* Default svg styling */
       svg {
-        margin: 0 auto;
+        margin: 0 auto 30px auto;
         display: block;
       }
 
@@ -95,7 +95,7 @@
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script type="text/javascript">
         var width = 800,
-            height = 600;
+            height = 525;
 
         var svg = d3.select("#viz").append("svg")
             .attr("width", width)
@@ -103,12 +103,14 @@
 
         d3.json("geo/topo.json", function(error, london) {
           var boroughs = topojson.object(london, london.objects.ldn);
+          
           var projection = d3.geo.albers()
-            .center([0.15, 51.5])
+            .center([0.16, 51.5])
             .rotate([0.2, 0])
             .parallels([51.3, 51.7])
             .scale(70000)
-            .translate([width / 2, height / 2]);
+            .translate([width/2, height/2]);
+          
           var path = d3.geo.path()
             .projection(projection);
 
