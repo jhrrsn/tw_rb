@@ -24,12 +24,16 @@
 
       /* Main message and search button */
       .jumbotron {
-        margin: 60px 0 0 0;
+        margin: 1em 0 0 0;
         text-align: center;
       }
       .jumbotron h1 {
-        font-size: 72px;
+        font-size: 3em;
         line-height: 1;
+      }
+      .jumbotron p {
+        font-size: 1.2em;
+        margin: 0;
       }
       .jumbotron .text-success {
         color: hsl(200,57%,40%);
@@ -159,7 +163,12 @@
               .attr("class", function(d) { return "const" + " " + d.id; })
               .attr("fill", function(d) { return "hsl(200,50%," +  glConst[d.id] + "%)"})
               .attr("stroke", function(d) { return "hsl(200,50%," +  glConst[d.id] + "%)"})
-              .attr("d", path);
+              .attr("d", path)
+              .on("mouseover", hover);
+
+          function hover(d) {
+            console.log(d.id);
+          }
           });
 
       </script>
