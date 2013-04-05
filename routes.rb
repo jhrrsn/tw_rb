@@ -27,10 +27,8 @@ post '/result' do
   # Use supplied keyword to query MongoDB
   input = params[:keyword].downcase
   @tweets = $coll.find("keywords" => input).sort(:time).to_a
-  puts(@tweets)
 
-
-  # Return results.erb with variables keywords, results, min & max time.
+  # Return results.erb with tweet data.
   erb :results, locals: {
     keyword: input, 
     results: @tweets

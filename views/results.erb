@@ -97,7 +97,7 @@
       <script src="http://code.jquery.com/jquery-latest.js"></script>
       <script type="text/javascript">
         <% results.each do |result| %>
-        console.log(<%=result%>)
+        console.log(<%=result['gl_const']%>);
         <% end %>
 
         var width = 800,
