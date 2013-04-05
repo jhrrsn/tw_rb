@@ -40,6 +40,8 @@
       svg {
         margin: 0 auto 30px auto;
         display: block;
+        stroke: white;
+        fill: #EFF3FF;
       }
 
       .footer p {
@@ -48,7 +50,7 @@
 
     </style>
 
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -101,9 +103,7 @@
             .attr("width", width)
             .attr("height", height);
 
-        d3.json("geo/topo.json", function(error, london) {
-          var boroughs = topojson.object(london, london.objects.ldn);
-          
+        d3.json("geo/topo.json", function(error, london) {          
           var projection = d3.geo.albers()
             .center([0.16, 51.5])
             .rotate([0.2, 0])
@@ -114,12 +114,13 @@
           var path = d3.geo.path()
             .projection(projection);
 
-          svg.selectAll(".borough")
+          svg.selectAll(".const")
             .data(topojson.object(london, london.objects.ldn).geometries)
             .enter().append("path")
-              .attr("class", function(d) { console.log(d.id + ", " + d.properties.name); return "borough" + " " + d.id; })
+              .attr("class", function(d) { return "const" + " " + d.id; })
               .attr("d", path);
-        });
+          });
+
       </script>
       <script src="js/bootstrap.min.js"></script>
     </div>
