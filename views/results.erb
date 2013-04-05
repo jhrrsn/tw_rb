@@ -44,7 +44,7 @@
         margin: 0 auto 30px auto;
         display: block;
         stroke-width: 1px;
-        fill: #EDF8E9;
+        fill: hsl(200,57%,90%);
       }
 
       .footer p {
@@ -132,10 +132,8 @@
         };
 
         for (var i = 41442; i <= 41455; i++) {
-          glConst[i] = Math.round(remap(glConst[i], 0, glMax, 40, 90));
+          glConst[i] = Math.round(remap(glConst[i], 0, glMax, 90, 50));
         }
-
-        console.log(glConst);
 
         var width = 800,
             height = 525;
