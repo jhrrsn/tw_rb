@@ -140,7 +140,7 @@
         }
 
         var width = 800,
-            height = 525;
+            height = 450;
 
         var svg = d3.select("#viz").append("svg")
             .attr("width", width)
@@ -151,7 +151,7 @@
             .center([0.16, 51.5])
             .rotate([0.2, 0])
             .parallels([51.3, 51.7])
-            .scale(70000)
+            .scale(60000)
             .translate([width/2, height/2]);
           
           var path = d3.geo.path()
