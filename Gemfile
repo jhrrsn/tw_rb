@@ -1,4 +1,5 @@
-source :rubygems
+source 'https://rubygems.org'
+ruby '1.9.3'
 gem 'mongo', '>= 1.8.0'
 gem 'tweetstream', '>= 2.4.0'
 gem 'd3-rails'
